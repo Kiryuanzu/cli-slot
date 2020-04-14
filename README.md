@@ -1,8 +1,8 @@
 # Install
 ```
-npm install sli-slot
+npm install cli-slot
 ```
 # Game Start
 ```
-node sli-slot
+node cli-slot
 ```
