@@ -10,7 +10,6 @@ let score = 0;
 var time_id;
 const max = 9;
 
-
 const StartSlot = function(){
     console.log(slot_number);
     slot_number ++;
@@ -22,7 +21,6 @@ const StartSlot = function(){
         clearTimeout(time_id);
     }
 };
-
 
 function StopSlot() {
     let slot_time = slot_numbers.length + 1;
