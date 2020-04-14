@@ -23,6 +23,29 @@ const StartSlot = function(){
     }
 };
 
+
+function StopSlot() {
+    let slot_time = slot_numbers.length + 1;
+    console.log("Stop!");
+    console.log(slot_time.toString() + "番目の数字:" + slot_number.toString());
+    slot_numbers.push(slot_number);
+    console.log(slot_numbers);
+    if (slot_numbers.length == 3) {
+        clearTimeout(time_id);
+        GameScore();
+        GameContinue();
+    }
+}
+
+function EnterEvent() {
+    process.stdin.on('keypress', function(ch, key) {
+        if (key.name === 'enter') {
+            StopSlot();
+            time_id = null;
+        }
+    }); 
+}
+
 function GameContinue() {
     slot_numbers = [];
     if (slot_part == 4 ) {
@@ -61,28 +84,6 @@ function GameScore() {
         console.log("残念");
         score += 0;
     }
-}
-
-function StopSlot() {
-    let slot_time = slot_numbers.length + 1;
-    console.log("Stop!");
-    console.log(slot_time.toString() + "番目の数字:" + slot_number.toString());
-    slot_numbers.push(slot_number);
-    console.log(slot_numbers);
-    if (slot_numbers.length == 3) {
-        clearTimeout(time_id);
-        GameScore();
-        GameContinue();
-    }
-}
-
-function EnterEvent() {
-    process.stdin.on('keypress', function(ch, key) {
-        if (key.name === 'enter') {
-            StopSlot();
-            time_id = null;
-        }
-    }); 
 }
 
 console.log("ゲームスタート!!!!");
