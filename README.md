@@ -1,5 +1,8 @@
 # Install
+```
 npm install sli-slot
-
-# Game
+```
+# Game Start
+```
 node sli-slot
+```
