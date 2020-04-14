@@ -23,7 +23,7 @@ const StartSlot = function(){
     }
 };
 
-function continue_game() {
+function GameContinue() {
     slot_numbers = [];
     if (slot_part == 4 ) {
         console.log("あなたの総合点数は" + score.toString() + "点です");
@@ -47,7 +47,7 @@ function continue_game() {
     }); 
 }
 
-function score_game() {
+function GameScore() {
     slot_part += 1;
     let result_set = new Set(slot_numbers);
     let result = Array.from(result_set);
@@ -71,8 +71,8 @@ function StopSlot() {
     console.log(slot_numbers);
     if (slot_numbers.length == 3) {
         clearTimeout(time_id);
-        score_game();
-        continue_game();
+        GameScore();
+        GameContinue();
     }
 }
 
