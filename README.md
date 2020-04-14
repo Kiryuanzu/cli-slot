@@ -4,5 +4,5 @@ npm install cli-slot
 ```
 # Game Start
 ```
-node cli-slot
+cli-slot
 ```

@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const keypress = require('keypress');
 
 let speed = 300;
