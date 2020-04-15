@@ -1,6 +1,6 @@
 # Install
 ```
-npm install cli-slot
+npm install -g cli-slot
 ```
 # Game Start
 ```
