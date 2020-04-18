@@ -38,9 +38,13 @@ function StopSlot() {
 function EnterEvent() {
     process.stdin.removeAllListeners('keypress');
     process.stdin.on('keypress', function(ch, key) {
-        if (key.name === 'enter') {
-            StopSlot();
-            time_id = null;
+        if (key != undefined) {
+            if (key.name === 'enter') {
+                StopSlot();
+                time_id = null;
+            }
+        } else {
+            console.log("半角で入力してください")
         }
     }); 
 }
@@ -62,11 +66,15 @@ function GameContinue() {
     }
     process.stdin.removeAllListeners('keypress');
     process.stdin.on('keypress', function(ch, key) {
-        if (key.name === 'space') {
-            if (slot_part <= 3) {
-                StartSlot();
-                EnterEvent();
+        if (key != undefined) {
+            if (key.name === 'space') {
+                if (slot_part <= 3) {
+                    StartSlot();
+                    EnterEvent();
+                }
             }
+        } else {
+            console.log("半角で入力してください")
         }
     });
 }
