@@ -45,6 +45,7 @@ function EnterEvent() {
 }
 
 function GameContinue() {
+    process.stdin.removeAllListeners('keypress');
     slot_numbers = [];
     if (slot_part == 4 ) {
         console.log("あなたの総合点数は" + score.toString() + "点です");
@@ -63,9 +64,10 @@ function GameContinue() {
         if (key.name === 'space') {
             if (slot_part <= 3) {
                 StartSlot();
+                EnterEvent();
             }
         }
-    }); 
+    });
 }
 
 function GameScore() {
