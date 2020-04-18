@@ -36,6 +36,7 @@ function StopSlot() {
 }
 
 function EnterEvent() {
+    process.stdin.removeAllListeners('keypress');
     process.stdin.on('keypress', function(ch, key) {
         if (key.name === 'enter') {
             StopSlot();
@@ -45,7 +46,6 @@ function EnterEvent() {
 }
 
 function GameContinue() {
-    process.stdin.removeAllListeners('keypress');
     slot_numbers = [];
     if (slot_part == 4 ) {
         console.log("あなたの総合点数は" + score.toString() + "点です");
@@ -60,6 +60,7 @@ function GameContinue() {
     } else {
         console.log("ゲーム再開(Spaceキーを押してからEnter)");
     }
+    process.stdin.removeAllListeners('keypress');
     process.stdin.on('keypress', function(ch, key) {
         if (key.name === 'space') {
             if (slot_part <= 3) {
