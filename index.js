@@ -2,12 +2,12 @@
 
 const keypress = require('keypress');
 
-let speed = 300;
+const speed = 300;
 let slot_number = 1;
 let slot_numbers = [];
 let slot_part = 1;
 let score = 0;
-var time_id;
+let time_id;
 const max = 9;
 
 const StartSlot = function(){
@@ -55,6 +55,8 @@ function GameContinue() {
         console.log("あなたの総合点数は" + score.toString() + "点です");
         if (score >= 150) {
             console.log("満点！！！あなたは最強のスロットマスターです。");
+        } else if ( score >= 100 ) {
+            console.log("後もう少しで最強のスロットマスターになれます！")
         } else if (score >= 50) {
             console.log("今日は良いことがあるかもしれません");
         } else if (score <= 0) {
@@ -95,8 +97,17 @@ function GameScore() {
     }
 }
 
-console.log("ゲームスタート!!!!");
-StartSlot();
+console.log("スロットゲームの遊び方: 流れてくる数字をタイミングよくEnterを押して揃えましょう！！")
 keypress(process.stdin);
-EnterEvent();
+process.stdin.on('keypress', function(ch, key) {
+    if (key != undefined) {
+        if (key.name === 'enter') {
+            console.log("ゲームスタート!!!!");
+            StartSlot();
+            EnterEvent();
+        }
+    } else {
+        console.log("半角で入力してください")
+    }
+}); 
 process.stdin.resume();
