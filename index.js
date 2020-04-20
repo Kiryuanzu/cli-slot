@@ -27,7 +27,7 @@ function stopSlot () {
   console.log('Stop!')
   console.log(slotTime.toString() + '番目の数字:' + slotNumber.toString())
   slotNumbers.push(slotNumber)
-  console.log(slotNumber)
+  console.log(slotNumbers)
   if (slotNumbers.length === 3) {
     clearTimeout(timeId)
     gameScore()
