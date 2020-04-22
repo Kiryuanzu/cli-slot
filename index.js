@@ -83,7 +83,7 @@ function gameScore () {
   const resultSet = new Set(slotNumbers)
   const result = Array.from(resultSet)
   if (result.length === 1) {
-    console.log('すごい！おめでとう！')
+    console.log('すごい！おめでとう！！')
     score += 50
   } else if (result.length === 2) {
     console.log('惜しい！')
@@ -104,7 +104,7 @@ function main () {
   keypress(process.stdin)
   process.stdin.on('keypress', function (ch, key) {
     if (key.name === 'enter') {
-      console.log('ゲームスタート!!!!')
+      console.log('ゲームスタート！')
       startSlot()
       enterEvent()
     }
