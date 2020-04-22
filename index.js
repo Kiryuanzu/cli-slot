@@ -25,7 +25,7 @@ function startSlot () {
 function stopSlot () {
   const slotTime = slotNumbers.length + 1
   console.log('Stop!')
-  console.log(slotTime.toString() + '番目の数字:' + slotNumber.toString())
+  console.log(`${slotTime}番目の数字: ${slotNumber}`)
   slotNumbers.push(slotNumber)
   console.log(slotNumbers)
   if (slotNumbers.length === 3) {
@@ -38,13 +38,9 @@ function stopSlot () {
 function enterEvent () {
   process.stdin.removeAllListeners('keypress')
   process.stdin.on('keypress', function (ch, key) {
-    if (key !== undefined) {
-      if (key.name === 'enter') {
-        stopSlot()
-        timeId = null
-      }
-    } else {
-      console.log('半角で入力してください')
+    if (key.name === 'enter') {
+      stopSlot()
+      timeId = null
     }
   })
 }
@@ -52,7 +48,7 @@ function enterEvent () {
 function gameContinue () {
   slotNumbers = []
   if (slotPart === 4) {
-    console.log('あなたの総合点数は' + score.toString() + '点です')
+    console.log(`あなたの総合点数は ${score} 点です`)
     if (score >= 150) {
       console.log('スロットマスターレベル: 3(MAX)')
       console.log('満点！！！あなたは最強のスロットマスターです。')
@@ -62,7 +58,7 @@ function gameContinue () {
     } else if (score >= 50) {
       console.log('スロットマスターレベル: 1')
       console.log('スロットマスターへの一歩を踏み出しましたね。')
-    } else if (50 > score >= 0) {
+    } else {
       console.log('スロットマスターレベル: 0')
       console.log('そういうこともありますよ。')
     }
@@ -72,15 +68,11 @@ function gameContinue () {
   }
   process.stdin.removeAllListeners('keypress')
   process.stdin.on('keypress', function (ch, key) {
-    if (key !== undefined) {
-      if (key.name === 'enter') {
-        if (slotPart <= 3) {
-          startSlot()
-          enterEvent()
-        }
+    if (key.name === 'enter') {
+      if (slotPart <= 3) {
+        startSlot()
+        enterEvent()
       }
-    } else {
-      console.log('半角で入力してください')
     }
   })
 }
@@ -100,24 +92,24 @@ function gameScore () {
     console.log('残念')
     score += 0
   }
-  if (slotPart != 4) {
-    console.log("トータル点数:" + score.toString())
-    console.log("残り" + limiteCount.toString() + "回遊べます")
+  if (slotPart !== 4) {
+    console.log(`トータル点数: ${score} `)
+    console.log(`残り${limiteCount}回遊べます`)
   }
 }
 
-console.log('スロットゲームの遊び方: 流れてくる数字をタイミングよくEnterを押して揃えましょう！！(Enterでゲーム開始)')
-console.log("最大3回まで遊べます。150点満点を目指して頑張りましょう！")
-keypress(process.stdin)
-process.stdin.on('keypress', function (ch, key) {
-  if (key !== undefined) {
+function main () {
+  console.log('スロットゲームの遊び方: 流れてくる数字をタイミングよくEnterを押して揃えましょう！！(Enterでゲーム開始)')
+  console.log('最大3回まで遊べます。150点満点を目指して頑張りましょう！')
+  keypress(process.stdin)
+  process.stdin.on('keypress', function (ch, key) {
     if (key.name === 'enter') {
       console.log('ゲームスタート!!!!')
       startSlot()
       enterEvent()
     }
-  } else {
-    console.log('半角で入力してください')
-  }
-})
-process.stdin.resume()
+  })
+  process.stdin.resume()
+}
+
+main()
