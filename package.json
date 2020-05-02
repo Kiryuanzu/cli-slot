@@ -18,10 +18,11 @@
     "url": "https://github.com/Kiryuanzu/cli-slot/issues"
   },
   "homepage": "https://github.com/Kiryuanzu/cli-slot#readme",
-  "dependencies": {},
+  "dependencies": {
+    "keypress": "^0.2.1"
+  },
   "devDependencies": {
     "chance": "^1.1.4",
-    "keypress": "^0.2.1",
     "rewire": "^5.0.0",
     "sinon": "^9.0.2"
   }
